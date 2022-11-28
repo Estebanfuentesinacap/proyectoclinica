@@ -1,5 +1,5 @@
 from django.contrib import admin
-from.models import Doctore, Paciente, Cita
+from.models import Doctore, Especialidade
 
 # Define la clase admin para Doctore
 class DoctoreAdmin(admin.ModelAdmin):
@@ -14,39 +14,20 @@ class DoctoreAdmin(admin.ModelAdmin):
         }),
     )
     
-# Define la clase admin para Paciente
-class DoctoreAdmin(admin.ModelAdmin):
-    list_display = ('Nombre', 'Apellido')
-    list_filter = ('Apellido')
+# Define la clase admin para Especialidad
+class EspecialidadeAdmin(admin.ModelAdmin):
+    list_display = ('Especialidad')
+    list_filter = ('doctor')
     fieldsets = (
         ('Información Personal',{
-            'fields':('Nombre', 'Apellido', 'Genero')
-        }),
-        ('Información Adicional',{
-            'fields':('Contacto', 'Email', 'Direccion')
-        }),
+            'fields':('doctor')
+        })
     )
     
-
-    
-# Define la clase admin para Cita
-class DoctoreAdmin(admin.ModelAdmin):
-    list_display = ('Nombre', 'Apellido')
-    list_filter = ('Apellido')
-    fieldsets = (
-        ('Información Personal',{
-            'fields':('doctor', 'paciente')
-        }),
-        ('Información Adicional',{
-            'fields':('datos', 'tiempo')
-        }),
-    )
-
 
 # Register your models here.
 admin.site.register(Doctore)
-admin.site.register(Paciente)
-admin.site.register(Cita)
+admin.site.register(Especialidade)
 
 
     

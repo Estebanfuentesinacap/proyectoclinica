@@ -10,21 +10,12 @@ class Doctore(models.Model):
     def __str__(self):
         """String que representa al objeto Doctore"""
         return f'{self.Nombre} {self.Apellido}'
-    
-class Paciente(models.Model):
-    Nombre = models.CharField(max_length=50)
-    Apellido = models.CharField(max_length=50)
-    Genero = models.CharField(max_length=10)
-    Contacto = models.IntegerField(null=True)
-    Email = models.EmailField()
-    Direccion = models.CharField(max_length=50)
+        
+class Especialidade(models.Model):
+    doctor = models.ForeignKey(Doctore, on_delete=models.CASCADE)
+    TipoEspecialidad = models.CharField(max_length=50)
     
     def __str__(self):
-        """String que representa al objeto Paciente"""
-        return f'{self.Nombre} {self.Apellido}'
-    
-class Cita(models.Model):
-    doctor = models.ForeignKey(Doctore, on_delete=models.CASCADE)
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    datos = models.TextField()
-    tiempo = models.TimeField()
+        """String que representa al objeto Especialidad"""
+        return f'{self.TipoEspecialidad}'
+           
